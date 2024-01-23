@@ -15,7 +15,24 @@ class ApiController
     {
         // Récupérer les données
         $data = json_decode(file_get_contents('php://input'), true);
-        print_r($data);
+        
+        // Ecrire les données dans un fichier
+        $file = fopen('webhook.txt', 'w');
+        fwrite($file, json_encode($data));
+        fclose($file);
+
+        // Executer la commande a la racine du site
+        shell_exec('gitpull.sh');
+
+        // Envoi d'un mail
+        $to = 'l.porrini@groupe-remove.com';
+        $subject = 'Webhook';
+        $message = 'Le webhook a bien été déclenché';
+        $headers = 'From: api.reborn.green@reborn.green';
+        mail($to, $subject, $message, $headers);
+
+        // Répondre au webhook
+        echo "git pull effectué";
         exit;
     }
 
