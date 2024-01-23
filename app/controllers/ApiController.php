@@ -24,7 +24,7 @@ class ApiController
         // Executer la commande a la racine du site
         shell_exec('gitpull.sh');
 
-        // Envoi d'un mail pour confirmer le webhook
+        // Envoi d'un mail
         $to = 'l.porrini@groupe-remove.com';
         $subject = 'Webhook';
         $message = 'Le webhook a bien été déclenché';
