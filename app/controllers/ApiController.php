@@ -11,6 +11,13 @@ class ApiController
         $this->apiModel = new ApiModel();
     }
 
+    public function webhook()
+    {
+        $data = json_decode(file_get_contents('php://input'), true);
+        print_r($data);
+        exit;
+    }
+
     public function check_page($pageName)
     {
         // Récupérer les données
