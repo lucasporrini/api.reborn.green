@@ -18,7 +18,7 @@ class ApiController
         
         // Ecrire les données dans un fichier
         $file = fopen('webhook.txt', 'w');
-        fwrite($file, json_encode($data));
+        fwrite($file, "Webhook déclenché le " . date('d/m/Y') . " à " . date('H:i:s') . "\n");
         fclose($file);
 
         // Executer la commande a la racine du site
