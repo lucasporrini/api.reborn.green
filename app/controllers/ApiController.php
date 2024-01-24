@@ -79,7 +79,7 @@ class ApiController
             // On envoie un mail d'echec
             $to = DEV_MAIL;
             $subject = "Echec - Déploiement du site"; 
-            $message = "Le site n\'a pu être déployé\n\nDernier commit: " . $lastcommit;
+            $message = "Le site n'a pu être déployé\n\nDernier commit: " . $lastcommit;
             $headers = "From: api.deploy@porrini.tech" . "\r\n";
             
             mail($to, $subject, $message, $headers) ? file_put_contents('./logs/auto/mail.log', 'Mail sent (' .  $date . '): ' . $lastcommit . ";\n", FILE_APPEND) : file_put_contents('./logs/auto/mail.log', 'Mail not sent (' .  $date . '): ' . $lastcommit . ";\n", FILE_APPEND);
