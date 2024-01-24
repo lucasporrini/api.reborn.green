@@ -33,7 +33,7 @@ class ApiController
 
             // On regarde si le script est présent dans le dossier "app/auto"
             if(!file_exists('./app/auto/autodeploy.sh')) {
-                file_put_contents('./logs/auto/test.log', "existe pas\n", FILE_APPEND);
+                file_put_contents('./logs/auto/tracking_deploy.log', "existe pas\n", FILE_APPEND);
                 return;
             }
 
