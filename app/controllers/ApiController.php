@@ -26,6 +26,8 @@ class ApiController
 
         $hash = hash_hmac('sha1', $payload, $secret); // On génère le hash
 
+        file_put_contents('./logs/auto/test.log', 'githubSignature:' . $githubSignature . ";\n" . 'hash: sha=1' . $hash, FILE_APPEND);
+
         if (hash_equals('sha1=' . $hash, $githubSignature)) {
             // On integre un message de validation avec la date et l'heure
             $date = date('d/m/Y H:i:s');
