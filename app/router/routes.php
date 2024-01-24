@@ -29,6 +29,6 @@ $router->get('/delete-product/:slug', [$ApiController, 'delete_product']);
 $router->get('/enable-product/:slug', [$ApiController, 'enable_product']);
 $router->get('/get_structure/:table', [$ApiController, 'get_structure']);
 
-$router->get('/github_webhook', [$ApiController, 'github_webhook']);
+$router->post('/github_webhook', [$ApiController, 'github_webhook']);
 
 $router->run();
