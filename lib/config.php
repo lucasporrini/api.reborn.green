@@ -3,6 +3,7 @@
 define('SITE_NAME',                     "api.reborn");
 define('SITE_URL_NAME',                 "api.reborn.green");
 define('SITE_URL',                      "https://www." . SITE_URL_NAME . "/");
+define('DEV_MAIL',                      "l.porrini@groupe-remove.com");
 define('SITE_LOGO',                     "logo.png");
 define('SITE_HEBERGEUR',                "ovh.fr");
 define('SITE_DEBUG',                    true); // Mettre à "false" en production
@@ -60,6 +61,7 @@ foreach ($lines as $line) {
         $_SERVER[$name] = $value;
     }
 };
+
 
 // Configuration de la connexion à la base de données
 $_CONFIG['db'] =        array(
