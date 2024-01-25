@@ -195,10 +195,10 @@ class ApiController
                     $products = $this->apiModel->get_products();
                 }
             }
-
+            dd($products);
             // Convertir les données
             $products = convert_to_ut8($products);
-            dd($products);
+
             // Retourner les données en json
             header('Content-Type: application/json');
             echo json_encode($products, JSON_UNESCAPED_UNICODE);
