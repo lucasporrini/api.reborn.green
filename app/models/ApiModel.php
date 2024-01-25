@@ -22,6 +22,7 @@ class ApiModel
     {
         // On vérifie que le token existe
         if(!isset($token)) {
+            file_put_contents('./logs/auth/auth.log', "\033[31m Error \033[0m (" .  date('d/m/Y H:i:s') . "): Token not found ;\n", FILE_APPEND);
             http_response_code(401);
             echo json_encode(['error' => 'Vous devez être connecté pour accéder à cette page']);
             return false;
@@ -33,7 +34,9 @@ class ApiModel
 
             if(preg_match($pattern, $token, $matches)) {
                 $token = $matches[1];
+                file_put_contents('./logs/auth/auth.log', "\033[32m Success \033[0m (" .  date('d/m/Y H:i:s') . "): Valid token ;\n", FILE_APPEND);
             } else {
+                file_put_contents('./logs/auth/auth.log', "\033[31m Error \033[0m (" .  date('d/m/Y H:i:s') . "): Authentification error ;\n", FILE_APPEND);
                 http_response_code(401);
                 echo json_encode(['error' => 'L\'authentification a échoué']);
                 return false;
@@ -43,18 +46,20 @@ class ApiModel
         // On vérifie que le token est valide
         $token_in_db = $this->verify_token($token);
         if(!$token_in_db) {
+            file_put_contents('./logs/auth/auth.log', "\033[31m Error \033[0m (" .  date('d/m/Y H:i:s') . "): Unvalid token ;\n", FILE_APPEND);
             http_response_code(401);
             echo json_encode(['error' => 'Le token n\'est pas renseigné ou n\'est pas valide']);
             return false;
         }
         
         if($token_in_db['value'] !== $token) {
+            file_put_contents('./logs/auth/auth.log', "\033[31m Error \033[0m (" .  date('d/m/Y H:i:s') . "): Authentification error ;\n", FILE_APPEND);
             http_response_code(401);
             echo json_encode(['error' => 'L\'authentification a échoué']);
             return false;
         }
 
-        file_put_contents('./logs/auth/auth.log', "\033[32m Success \033[0m (" .  date('d/m/Y H:i:s') . "):  ;\n", FILE_APPEND);
+        file_put_contents('./logs/auth/auth.log', "\033[32m Success \033[0m (" .  date('d/m/Y H:i:s') . "): Request done ;\n", FILE_APPEND);
         
         return true;
     }
