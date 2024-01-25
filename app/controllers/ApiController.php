@@ -252,7 +252,6 @@ class ApiController
 
     public function get_company()
     {
-        print_r(apache_request_headers());
         // On récupère le token dans le header
         $headers = apache_request_headers();
         $token = $headers['Authorization'];
