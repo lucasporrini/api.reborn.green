@@ -190,12 +190,12 @@ class ApiController
             if(count($products) < 36) {
                 // On change les conditions
                 $products = $this->apiModel->get_products_with_conditions(['available' => 1, 'active' => 1, 'booked' => 1, 'sold' => 0]);
-                dd($products);
+                
                 if(count($products) < 36) {
                     $products = $this->apiModel->get_products();
                 }
             }
-
+            dd($products);
             // Retourner les données en json
             header('Content-Type: application/json');
             echo json_encode($products, JSON_UNESCAPED_UNICODE);
