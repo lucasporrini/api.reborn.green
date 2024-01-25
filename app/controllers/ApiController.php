@@ -195,10 +195,11 @@ class ApiController
                     $products = $this->apiModel->get_products();
                 }
             }
-            dd($products);
+
             // Retourner les données en json
             header('Content-Type: application/json');
-            echo json_encode($products, JSON_UNESCAPED_UNICODE);
+            $test = json_encode($products, JSON_UNESCAPED_UNICODE);
+            dd($test);
         }
     }
 
