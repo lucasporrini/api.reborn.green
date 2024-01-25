@@ -36,7 +36,7 @@ function write_log($file, $keyWord, $message, $colorCode = null) {
     if (file_exists('./logs/' . $file . '.log')) {
         $logFile = './logs/' . $file . '.log';
     } else {
-        $logFile = glob('./logs/*/' . $file . '.log')[0];
+        $logFile = glob('./logs/*/' . $file . '.log');
     }
     dd($logFile);
 
