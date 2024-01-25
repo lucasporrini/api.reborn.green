@@ -5,7 +5,7 @@ class Database {
 
     public function __construct($_CONFIG) {
         try {
-            $dsn = "mysql:host={$_CONFIG['db']['host']};dbname={$_CONFIG['db']['name']}";
+            $dsn = "mysql:host={$_CONFIG['db']['host']};dbname={$_CONFIG['db']['name']};charset=utf8mb4";
             $this->pdo = new PDO($dsn, $_CONFIG['db']['user'], $_CONFIG['db']['pass']);
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
