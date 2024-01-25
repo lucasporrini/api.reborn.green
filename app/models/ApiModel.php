@@ -22,7 +22,7 @@ class ApiModel
     {
         // On vérifie que le token existe
         if(!isset($token)) {
-            write_log('auth.log', 'Error', 'Bearer token not found', 'red');
+            write_log('auth', 'Error', 'Bearer token not found', 'red');
             http_response_code(401);
             echo json_encode(['error' => 'Vous devez être connecté pour accéder à cette page']);
             return false;
@@ -34,9 +34,9 @@ class ApiModel
 
             if(preg_match($pattern, $token, $matches)) {
                 $token = $matches[1];
-                write_log('auth.log', 'Success', 'Bearer token found', 'green');
+                write_log('auth', 'Success', 'Bearer token found', 'green');
             } else {
-                write_log('auth.log', 'Error', 'Bearer token not found', 'red');
+                write_log('auth', 'Error', 'Bearer token not found', 'red');
                 http_response_code(401);
                 echo json_encode(['error' => 'L\'authentification a échoué']);
                 return false;
@@ -46,20 +46,20 @@ class ApiModel
         // On vérifie que le token est valide
         $token_in_db = $this->verify_token($token);
         if(!$token_in_db) {
-            write_log('auth.log', 'Error', 'Bearer token not found', 'red');
+            write_log('auth', 'Error', 'Bearer token not found', 'red');
             http_response_code(401);
             echo json_encode(['error' => 'Le token n\'est pas renseigné ou n\'est pas valide']);
             return false;
         }
         
         if($token_in_db['value'] !== $token) {
-            write_log('auth.log', 'Error', 'Unvalid token', 'red');
+            write_log('auth', 'Error', 'Unvalid token', 'red');
             http_response_code(401);
             echo json_encode(['error' => 'L\'authentification a échoué']);
             return false;
         }
 
-        write_log('auth.log', 'Success', 'Request done', 'green');
+        write_log('auth', 'Success', 'Request done', 'green');
         
         return true;
     }
