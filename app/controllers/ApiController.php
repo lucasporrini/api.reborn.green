@@ -259,7 +259,7 @@ class ApiController
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
             $company = $this->apiModel->get_company();
-
+            print_r($company);
             // Retourner les données en json
             header('Content-Type: application/json');
             echo json_encode($company, JSON_UNESCAPED_UNICODE);
