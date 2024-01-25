@@ -59,7 +59,7 @@ class ApiModel
             return false;
         }
 
-        file_put_contents('./logs/auth/auth.log', "\033[32m Success \033[0m (" .  date('d/m/Y H:i:s') . "): Request done ;\n", FILE_APPEND);
+        write_log('auth.log', 'Success', 'Request done', 'green');
         
         return true;
     }

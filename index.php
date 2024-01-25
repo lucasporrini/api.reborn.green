@@ -10,6 +10,7 @@ if (SITE_DEBUG === true) {
 }
 
 require_once 'lib/conn.php';
+require_once 'lib/preprocess.php';
 
 // charger le router
 require_once 'app/router/Router.php';
