@@ -53,6 +53,8 @@ class ApiModel
             echo json_encode(['error' => 'L\'authentification a échoué']);
             return false;
         }
+
+        file_put_contents('./logs/auth/auth.log', "\033[32m Success \033[0m (" .  $date . "):  ;\n", FILE_APPEND);
         
         return true;
     }
@@ -91,7 +93,7 @@ class ApiModel
 
     public function get_products()
     {
-        return $this->db->select('*', 'products', []);
+        return $this->db->select('*', 'products');
     }
 
     public function get_products_with_conditions($conditions, $limit = null)
