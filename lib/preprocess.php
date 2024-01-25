@@ -33,6 +33,8 @@ function write_log($file, $keyWord, $message, $colorCode = null) {
     $endColor = "\033[0m";
 
     // Search the file into the logs directory or any folder in the logs directory
+    $test = glob('./logs/' . $file . '.log') ?? glob('./logs/*/' . $file . '.log');
+    dd($test);
     $logFile = glob('./logs/' . $file . '.log')[0] ?? glob('./logs/*/' . $file . '.log')[0];
 
     // If the file doesn't exist, create it
