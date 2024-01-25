@@ -58,15 +58,4 @@ function write_log($file, $keyWord, $message, $colorCode = 'default') {
     file_put_contents($logFilePath, $formattedMessage . "\n", FILE_APPEND);
 }
 
-function convert_to_utf8($input) {
-    if (is_array($input)) {
-        foreach ($input as $key => $value) {
-            $input[$key] = convert_to_utf8($value);
-        }
-    } elseif (is_string($input)) {
-        return utf8_encode($input);
-    }
-    return $input;
-}
-
 ?>
