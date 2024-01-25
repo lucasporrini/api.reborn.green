@@ -91,7 +91,7 @@ class ApiModel
 
     public function get_products()
     {
-        return $this->db->select('*', 'products');
+        return $this->db->select('*', 'products', []);
     }
 
     public function get_products_with_conditions($conditions, $limit = null)
