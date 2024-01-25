@@ -197,9 +197,7 @@ class ApiController
             }
 
             // Convertir les données
-            $products = array_map(function($product) {
-                return mb_convert_encoding($product, 'UTF-8', 'UTF-8');
-            }, $products);
+            $products = convert_to_ut8($products);
             
             // Retourner les données en json
             header('Content-Type: application/json');

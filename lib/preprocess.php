@@ -58,4 +58,10 @@ function write_log($file, $keyWord, $message, $colorCode = 'default') {
     file_put_contents($logFilePath, $formattedMessage . "\n", FILE_APPEND);
 }
 
+function convert_to_ut8($array) {
+    $array = array_map(function($item) {
+        return mb_convert_encoding($item, 'UTF-8', 'UTF-8');
+    }, $array);
+}
+
 ?>
