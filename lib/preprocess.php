@@ -15,7 +15,7 @@ function d($var) {
     echo '</pre>';
 }
 
-function write_log($file, $keyWord, $message, $colorCode = null) {
+function write_log($file, $keyWord, $message, $colorCode = 'default') {
     // Define colors
     $colors = [
         'red' => "\033[31m",
@@ -27,29 +27,35 @@ function write_log($file, $keyWord, $message, $colorCode = null) {
         'white' => "\033[37m",
         'default' => "\033[0m"
     ];
-    $color = $colors[$colorCode] ?? $colors['default'];
+    $color = $colors[$colorCode];
 
     // End color
     $endColor = "\033[0m";
 
-    // Search the file into the logs directory or any folder in the logs directory
-    if (file_exists('./logs/' . $file . '.log')) {
-        $logFile = './logs/' . $file . '.log';
-    } else {
-        $logFile = glob('./logs/*/' . $file . '.log');
+    // Define the log file path
+    $logFilePath = './logs/' . $file . '.log';
+
+    // Search the file in the logs directory and its subdirectories
+    if (!file_exists($logFilePath)) {
+        $foundFiles = glob('./logs/**/' . $file . '.log', GLOB_BRACE);
+        if (!empty($foundFiles)) {
+            $logFilePath = $foundFiles[0]; // Take the first found file
+        }
     }
-    dd($logFile);
 
     // If the file doesn't exist, create it
-    if (!file_exists($logFile)) {
-        file_put_contents($logFile, '');
+    if (!file_exists($logFilePath)) {
+        if (!is_dir(dirname($logFilePath))) {
+            mkdir(dirname($logFilePath), 0777, true);
+        }
+        file_put_contents($logFilePath, '');
     }
 
     // Define the message
-    $message = $color . $keyWord . $endColor . ' (' . date('d/m/Y H:i:s') . '): ' . $message;
+    $formattedMessage = $color . $keyWord . $endColor . ' (' . date('d/m/Y H:i:s') . '): ' . $message;
 
     // Write the message into the file
-    file_put_contents($logFile, $message . "\n", FILE_APPEND);
+    file_put_contents($logFilePath, $formattedMessage . "\n", FILE_APPEND);
 }
 
 ?>
