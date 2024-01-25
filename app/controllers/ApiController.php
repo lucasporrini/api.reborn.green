@@ -185,12 +185,12 @@ class ApiController
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
             $products = $this->apiModel->get_products_with_conditions(['available' => 1, 'active' => 1, 'booked' => 0, 'sold' => 0]);
-            dd($products);
+            
             // Si la liste des produits est inférieur à 36
             if(count($products) < 36) {
                 // On change les conditions
                 $products = $this->apiModel->get_products_with_conditions(['available' => 1, 'active' => 1, 'booked' => 1, 'sold' => 0]);
-
+                dd($products);
                 if(count($products) < 36) {
                     $products = $this->apiModel->get_products();
                 }
