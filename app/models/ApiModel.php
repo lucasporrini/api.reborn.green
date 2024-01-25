@@ -54,7 +54,7 @@ class ApiModel
             return false;
         }
 
-        file_put_contents('./logs/auth/auth.log', "\033[32m Success \033[0m (" .  $date . "):  ;\n", FILE_APPEND);
+        file_put_contents('./logs/auth/auth.log', "\033[32m Success \033[0m (" .  date('d/m/Y H:i:s') . "):  ;\n", FILE_APPEND);
         
         return true;
     }
