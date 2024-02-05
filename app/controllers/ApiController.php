@@ -60,7 +60,7 @@ class ApiController
             $to = DEV_MAIL;
             $subject = "Valid - Déploiement du site";
             $message = "Le site a été déployé avec succès\n\nDernier commit: " . $lastcommit;
-            $headers = "From: api.deploy@porrini.tech" . "\r\n";
+            $headers = "From: api.deploy@" . SITE_URL_NAME . "\r\n";
             
             mail($to, $subject, $message, $headers) ? file_put_contents('./logs/auto/mail.log', 'Mail sent (' .  $date . '): ' . $lastcommit . ";\n", FILE_APPEND) : file_put_contents('./logs/auto/mail.log', 'Mail not sent (' .  $date . '): ' . $lastcommit . ";\n", FILE_APPEND);
         } else {
@@ -80,7 +80,7 @@ class ApiController
             $to = DEV_MAIL;
             $subject = "Echec - Déploiement du site"; 
             $message = "Le site n'a pu être déployé\n\nDernier commit: " . $lastcommit;
-            $headers = "From: api.deploy@porrini.tech" . "\r\n";
+            $headers = "From: api.deploy@" . SITE_URL_NAME . "\r\n";
             
             mail($to, $subject, $message, $headers) ? file_put_contents('./logs/auto/mail.log', 'Mail sent (' .  $date . '): ' . $lastcommit . ";\n", FILE_APPEND) : file_put_contents('./logs/auto/mail.log', 'Mail not sent (' .  $date . '): ' . $lastcommit . ";\n", FILE_APPEND);
         }
