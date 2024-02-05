@@ -141,6 +141,7 @@ class ApiController
             // Récupérer les données
             $data = json_decode(file_get_contents('php://input'), true);
 
+            dd($data);
             $email = $data['email'];
             $password = $data['password'];
 
