@@ -98,7 +98,7 @@ class ApiController
 
     public function home()
     {
-        echo 'Welcome to the API';
+        echo 'Welcome to the API !';
     }
 
     public function get_header()
