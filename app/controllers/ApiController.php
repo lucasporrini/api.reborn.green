@@ -458,7 +458,7 @@ class ApiController
         }
     }
 
-    public function edit_product_photo($slug)
+    public function edit_product_photo($slug, $photos)
     {
         // On récupère le token dans le header
         $headers = apache_request_headers();
@@ -466,10 +466,7 @@ class ApiController
         
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
-            $data = json_decode(file_get_contents('php://input'), true);
-            $photo = $data['photo'];
-
-            $editedProduct = $this->apiModel->edit_product_photo($slug, $photo);
+            $editedProduct = $this->apiModel->edit_product_photo($slug, $photos);
             
             if($editedProduct !== null) {
                 header('Content-Type: application/json');

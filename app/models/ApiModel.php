@@ -166,4 +166,9 @@ class ApiModel
         $sql = "SHOW COLUMNS FROM " . $table;
         return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function edit_product_photo($slug, $photos)
+    {
+        return $this->db->update('products', ['photos' => $photos], ['slug' => $slug]);
+    }
 }
