@@ -458,7 +458,7 @@ class ApiController
         }
     }
 
-    public function edit_product_photo($slug, $photos)
+    public function edit_product_photo($slug)
     {
         // On récupère le token dans le header
         $headers = apache_request_headers();
