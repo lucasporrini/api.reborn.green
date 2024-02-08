@@ -169,6 +169,8 @@ class ApiModel
 
     public function edit_product_photo($slug, $photos)
     {
-        return $this->db->update('products', ['photos' => $photos], ['slug' => $slug]);
+        $sql = "UPDATE products SET photos = :photos WHERE slug = :slug";
+        $params = [':photos' => $photos, ':slug' => $slug];
+        return $this->db->query($sql, $params);
     }
 }
