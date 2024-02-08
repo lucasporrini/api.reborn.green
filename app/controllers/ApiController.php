@@ -467,12 +467,10 @@ class ApiController
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
             $photos = json_decode(file_get_contents('php://input'), true);
-            print_r(json_encode($photos['photos']));
+
+            // On fait la modification en base de données
             $editedProduct = $this->apiModel->edit_product_photo($slug, $photos['photos']);
-            echo "<pre>";
-            print_r($editedProduct);
-            echo "</pre>";
-            
+
             if($editedProduct !== null) {
                 header('Content-Type: application/json');
                 http_response_code(500);
