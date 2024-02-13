@@ -468,9 +468,9 @@ class ApiController
             // Récupérer les données
             $data = json_decode(file_get_contents('php://input'), true);
             $data = parse_str($data, $array);
-            dd($array);
+            
             // On fait la modification en base de données
-            $editedProduct = $this->apiModel->edit_product($slug, json_decode($data));
+            $editedProduct = $this->apiModel->edit_product($slug, $data);
 
             if($editedProduct !== null) {
                 header('Content-Type: application/json');
