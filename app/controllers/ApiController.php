@@ -463,9 +463,9 @@ class ApiController
         echo "<pre>";
         print_r($slug);
         echo "</pre>";
-        echo "<pre>";
-        print_r($_POST);
-        echo "</pre>";
+        // echo "<pre>";
+        // print_r($_POST);
+        // echo "</pre>";
     }
 
     public function edit_product_photo($slug)
