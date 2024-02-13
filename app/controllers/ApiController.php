@@ -460,13 +460,29 @@ class ApiController
 
     public function edit_product($slug)
     {
-        echo "<pre>";
-        print_r($slug);
-        echo "</pre>";
-        echo "<pre>";
-        print_r($_POST);
-        echo "</pre>";
-        exit;
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+        
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $photos = json_decode(file_get_contents('php://input'), true);
+
+            // On fait la modification en base de données
+            $editedProduct = $this->apiModel->edit_product_photo($slug, $photos['photos']);
+
+            if($editedProduct !== null) {
+                header('Content-Type: application/json');
+                http_response_code(500);
+                echo json_encode(['error' => 'Erreur interne']);
+                exit;
+            } else {
+                // Retourner les données en json
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode(['success' => 'Photo modifiée avec succès'], JSON_UNESCAPED_UNICODE);
+            }
+        }
     }
 
     public function edit_product_photo($slug)
