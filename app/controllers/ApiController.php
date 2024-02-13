@@ -460,7 +460,6 @@ class ApiController
 
     public function edit_product($slug)
     {
-        echo '<pre>';print_r($data);echo '</pre>';
         // On récupère le token dans le header
         $headers = apache_request_headers();
         $token = $headers['Authorization'];
@@ -468,7 +467,7 @@ class ApiController
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
             $data = json_decode(file_get_contents('php://input'), true);
-            print_r($data);
+            echo '<pre>';print_r($data);echo '</pre>';
             // On fait la modification en base de données
             $editedProduct = $this->apiModel->edit_product($slug, $data);
 
