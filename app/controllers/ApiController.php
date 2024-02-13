@@ -470,7 +470,7 @@ class ApiController
             echo '$data:';
             echo '<pre>';print_r(json_decode($data));echo '</pre>';
             // On fait la modification en base de données
-            $editedProduct = $this->apiModel->edit_product($slug, $data);
+            $editedProduct = $this->apiModel->edit_product($slug, json_decode($data));
 
             if($editedProduct !== null) {
                 header('Content-Type: application/json');
