@@ -460,6 +460,7 @@ class ApiController
 
     public function edit_product($slug)
     {
+        echo '<pre>';print_r($_POST);echo '</pre>';
         // On récupère le token dans le header
         $headers = apache_request_headers();
         $token = $headers['Authorization'];
