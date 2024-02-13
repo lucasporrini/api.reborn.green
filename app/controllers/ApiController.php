@@ -469,7 +469,7 @@ class ApiController
             $data = json_decode(file_get_contents('php://input'), true);
             print_r($data);
             // On fait la modification en base de données
-            $editedProduct = $this->apiModel->edit_product_photo($slug, $data);
+            $editedProduct = $this->apiModel->edit_product($slug, $data);
 
             if($editedProduct !== null) {
                 header('Content-Type: application/json');
