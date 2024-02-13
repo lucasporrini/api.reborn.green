@@ -169,6 +169,7 @@ class ApiModel
 
     public function edit_product($slug, $data)
     {
+        dd($data);
         return $this->db->update('products', $data, ['slug' => $slug]);
     }
 
