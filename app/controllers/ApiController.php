@@ -458,6 +458,16 @@ class ApiController
         }
     }
 
+    public function edit_product($slug)
+    {
+        echo "<pre>";
+        print_r($slug);
+        echo "</pre>";
+        echo "<pre>";
+        print_r($_POST);
+        echo "</pre>";
+    }
+
     public function edit_product_photo($slug)
     {
         // On récupère le token dans le header
