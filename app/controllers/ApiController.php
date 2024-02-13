@@ -463,6 +463,7 @@ class ApiController
         echo "<pre>";
         print_r($slug);
         echo "</pre>";
+        exit;
         // echo "<pre>";
         // print_r($_POST);
         // echo "</pre>";
