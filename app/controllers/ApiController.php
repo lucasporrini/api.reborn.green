@@ -467,7 +467,7 @@ class ApiController
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
             $data = file_get_contents('php://input');
-            print_r($data);
+            ///print_r($data);
             
             // On fait la modification en base de données
             $editedProduct = $this->apiModel->edit_product($slug, $data);
