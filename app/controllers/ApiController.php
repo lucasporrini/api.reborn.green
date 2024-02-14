@@ -468,6 +468,7 @@ class ApiController
             // Récupérer les données
             $data = file_get_contents('php://input');
             print_r($data);
+            print_r(json_decode($data, true));
             
             // On fait la modification en base de données
             $editedProduct = $this->apiModel->edit_product($slug, $data);
