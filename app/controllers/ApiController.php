@@ -467,7 +467,6 @@ class ApiController
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
             $data = json_decode(file_get_contents('php://input'), true);
-            print_r($data);
             
             // On fait la modification en base de données
             $editedProduct = $this->apiModel->edit_product($slug, $data);
@@ -482,6 +481,7 @@ class ApiController
                 header('Content-Type: application/json');
                 http_response_code(200);
                 echo json_encode(['success' => 'Produit modifié avec succès'], JSON_UNESCAPED_UNICODE);
+                exit;
             }
         }
     }
