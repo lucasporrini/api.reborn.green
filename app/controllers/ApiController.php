@@ -472,19 +472,19 @@ class ApiController
             
             // On fait l'ajout en base de données
             $addedProduct = $this->apiModel->add_product($data);
-            echo json_encode($addedProduct);
-            // if($addedProduct !== null) {
-            //     header('Content-Type: application/json');
-            //     http_response_code(500);
-            //     echo json_encode(['error' => 'Erreur interne']);
-            //     exit;
-            // } else {
-            //     // Retourner les données en json
-            //     header('Content-Type: application/json');
-            //     http_response_code(200);
-            //     echo json_encode(['success' => 'Produit ajouté avec succès'], JSON_UNESCAPED_UNICODE);
-            //     exit;
-            // }
+            
+            if($addedProduct !== null) {
+                header('Content-Type: application/json');
+                http_response_code(500);
+                echo json_encode(['error' => 'Erreur interne']);
+                exit;
+            } else {
+                // Retourner les données en json
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode(['success' => 'Produit ajouté avec succès'], JSON_UNESCAPED_UNICODE);
+                exit;
+            }
         }
     }
 
