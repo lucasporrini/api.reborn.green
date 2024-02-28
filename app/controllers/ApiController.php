@@ -469,7 +469,7 @@ class ApiController
             $data = json_decode(file_get_contents('php://input'), true);
 
             $data['storage_location'] == 'dépôt' ? $data['location_id'] = null : '';
-            dd($data);
+            echo json_encode($data); exit;
             // On fait l'ajout en base de données
             $addedProduct = $this->apiModel->add_product($data);
 
@@ -485,7 +485,6 @@ class ApiController
             //     echo json_encode(['success' => 'Produit ajouté avec succès'], JSON_UNESCAPED_UNICODE);
             //     exit;
             // }
-            echo json_encode($addedProduct);
         }
     }
 
