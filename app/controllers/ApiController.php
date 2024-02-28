@@ -476,7 +476,8 @@ class ApiController
             if($addedProduct == null) {
                 header('Content-Type: application/json');
                 http_response_code(500);
-                echo json_encode(['error' => 'Votre produit n\'a pas pu être ajouté, vérifiez les données renseignées']);
+                $json = ['error' => 'Erreur interne', 'id' => $addedProduct];
+                echo json_encode($json, JSON_UNESCAPED_UNICODE);
                 exit;
             } else {
                 // Retourner les données en json
