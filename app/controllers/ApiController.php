@@ -472,11 +472,11 @@ class ApiController
             
             // On fait l'ajout en base de données
             $addedProduct = $this->apiModel->add_product($data);
-            echo json_encode($addedProduct);exit;
-            if($addedProduct !== null) {
+            
+            if($addedProduct == null) {
                 header('Content-Type: application/json');
                 http_response_code(500);
-                echo json_encode(['error' => 'Erreur interne']);
+                echo json_encode(['error' => 'Votre produit n\'a pas pu être ajouté, vérifiez les données renseignées']);
                 exit;
             } else {
                 // Retourner les données en json
