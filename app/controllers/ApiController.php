@@ -458,6 +458,36 @@ class ApiController
         }
     }
 
+    public function add_product()
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+        
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $data = json_decode(file_get_contents('php://input'), true);
+
+            $data['storage_location'] == 'dépôt' ? $data['location_id'] = null : '';
+            
+            // On fait l'ajout en base de données
+            $addedProduct = $this->apiModel->add_product($data);
+
+            if($addedProduct !== null) {
+                header('Content-Type: application/json');
+                http_response_code(500);
+                echo json_encode(['error' => 'Erreur interne']);
+                exit;
+            } else {
+                // Retourner les données en json
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode(['success' => 'Produit ajouté avec succès'], JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+        }
+    }
+
     public function edit_product($slug)
     {
         // On récupère le token dans le header

@@ -167,6 +167,11 @@ class ApiModel
         return $this->db->query($sql)->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public function add_product($data)
+    {
+        return $this->db->insert('products', $data);
+    }
+
     public function edit_product($slug, $data)
     {
         return $this->db->update('products', $data, ['slug' => $slug]);

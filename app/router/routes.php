@@ -28,6 +28,7 @@ $router->get('/location/:id', [$ApiController, 'get_location_by_id']);
 $router->get('/delete-product/:slug', [$ApiController, 'delete_product']);
 $router->get('/enable-product/:slug', [$ApiController, 'enable_product']);
 $router->get('/get_structure/:table', [$ApiController, 'get_structure']);
+$router->post('/add-product', [$ApiController, 'add_product']);
 $router->post('/edit-product/:slug', [$ApiController, 'edit_product']);
 $router->post('/edit-product-photo/:slug', [$ApiController, 'edit_product_photo']);
 
