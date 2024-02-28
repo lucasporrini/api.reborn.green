@@ -476,14 +476,14 @@ class ApiController
             if($addedProduct == null) {
                 header('Content-Type: application/json');
                 http_response_code(500);
-                $json = ['error' => 'Erreur interne', 'id' => $addedProduct];
+                $json = ['error' => 'Erreur interne'];
                 echo json_encode($json, JSON_UNESCAPED_UNICODE);
                 exit;
             } else {
                 // Retourner les données en json
                 header('Content-Type: application/json');
                 http_response_code(200);
-                echo json_encode(['success' => 'Produit ajouté avec succès'], JSON_UNESCAPED_UNICODE);
+                echo json_encode(['success' => 'Produit ajouté avec succès', 'id' => $addedProduct], JSON_UNESCAPED_UNICODE);
                 exit;
             }
         }
