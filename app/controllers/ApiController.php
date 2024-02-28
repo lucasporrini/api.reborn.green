@@ -485,7 +485,7 @@ class ApiController
             //     echo json_encode(['success' => 'Produit ajouté avec succès'], JSON_UNESCAPED_UNICODE);
             //     exit;
             // }
-            dd($addedProduct);
+            echo json_encode($addedProduct);
         }
     }
 
