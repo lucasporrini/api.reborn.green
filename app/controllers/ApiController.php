@@ -469,7 +469,8 @@ class ApiController
             $data = json_decode(file_get_contents('php://input'), true);
 
             $data['storage_location'] == 'dépôt' ? $data['location_id'] = null : '';
-            
+            $data['created_at'] = date('Y-m-d');
+
             // On fait l'ajout en base de données
             $addedProduct = $this->apiModel->add_product($data);
             
