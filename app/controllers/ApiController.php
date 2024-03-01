@@ -543,7 +543,7 @@ class ApiController
                         "Claims": "i:0#.f|membership|m.demiaude@groupe-remove.com",
                         "DisplayName": "Maxime DEMIAUDE",
                         "Email": m.demiaude@groupe-remove.com,
-                        "Picture": https://removefrance.sharepoint.com/sites/prevention/_layouts/15/UserPhoto.aspx?Size=L&AccountName=m.demiaude@groupe-remove.com,
+                        "Picture": "https://removefrance.sharepoint.com/sites/prevention/_layouts/15/UserPhoto.aspx?Size=L&AccountName=m.demiaude@groupe-remove.com",
                         "Department": null,
                         "JobTitle": null
                     },
@@ -553,7 +553,7 @@ class ApiController
                         "Claims": "i:0#.f|membership|m.demiaude@groupe-remove.com",
                         "DisplayName": "Maxime DEMIAUDE",
                         "Email": m.demiaude@groupe-remove.com,
-                        "Picture": https://removefrance.sharepoint.com/sites/prevention/_layouts/15/UserPhoto.aspx?Size=L&AccountName=m.demiaude@groupe-remove.com,
+                        "Picture": "https://removefrance.sharepoint.com/sites/prevention/_layouts/15/UserPhoto.aspx?Size=L&AccountName=m.demiaude@groupe-remove.com",
                         "Department": null,
                         "JobTitle": null
                     },
@@ -565,7 +565,7 @@ class ApiController
                         "Medium": null,
                         "Small": null
                     },
-                    "{Link}": https://removefrance.sharepoint.com/sites/prevention/_layouts/15/listform.aspx?PageType=4&ListId=9ae70dee%2D8be3%2D4560%2Da8d1%2D1ba53a5b3c69&ID=8&ContentTypeID=0x0100D6BF31B49C94A54C847E00D3EAA439F80092F01DC2799F2941804B208EEEB592F2,
+                    "{Link}": "https://removefrance.sharepoint.com/sites/prevention/_layouts/15/listform.aspx?PageType=4&ListId=9ae70dee%2D8be3%2D4560%2Da8d1%2D1ba53a5b3c69&ID=8&ContentTypeID=0x0100D6BF31B49C94A54C847E00D3EAA439F80092F01DC2799F2941804B208EEEB592F2",
                     "{Name}": "Armoire",
                     "{FilenameWithExtension}": "Armoire",
                     "{Path}": "Lists/Saisie_inventaire_reborn/",
