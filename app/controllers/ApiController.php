@@ -495,11 +495,128 @@ class ApiController
         $token = $headers['Authorization'];
         
         if($this->apiModel->middleware_auth($token)) {
+            $temp = '{
+                "@odata.etag": "\"4\"",
+                "ItemInternalId": "8",
+                "ID": 8,
+                "Title": "Armoire",
+                "height": 1.8,
+                "width": 0.95,
+                "depth": 0.45,
+                "weight": 40,
+                "brand": "métalif",
+                "material": {
+                    "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
+                    "Id": 3,
+                    "Value": "métal"
+                },
+                "material#Id": 3,
+                "trust": {
+                    "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
+                    "Id": 3,
+                    "Value": "4"
+                },
+                "trust#Id": 3,
+                "quantity": 1,
+                "unite": [
+                    {
+                        "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
+                        "Id": 4,
+                        "Value": "u"
+                    }
+                ],
+                unite@odata.type: "#Collection(Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference)",
+                "unite#Id": [
+                    4
+                ],
+                unite#Id@odata.type: "#Collection(Int64)",
+                "packaging": 1,
+                "state": {
+                    "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
+                    "Id": 1,
+                    "Value": "moyen"
+                },
+                "state#Id": 1,
+                "available0": true,
+                "Modified": "2024-02-29T21:36:29Z",
+                "Created": "2024-02-29T21:13:38Z",
+                "Author": {
+                    "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedUser",
+                    "Claims": "i:0#.f|membership|m.demiaude@groupe-remove.com",
+                    "DisplayName": "Maxime DEMIAUDE",
+                    "Email": m.demiaude@groupe-remove.com,
+                    "Picture": https://removefrance.sharepoint.com/sites/prevention/_layouts/15/UserPhoto.aspx?Size=L&AccountName=m.demiaude@groupe-remove.com,
+                    "Department": null,
+                    "JobTitle": null
+                },
+                "Author#Claims": "i:0#.f|membership|m.demiaude@groupe-remove.com",
+                "Editor": {
+                    "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedUser",
+                    "Claims": "i:0#.f|membership|m.demiaude@groupe-remove.com",
+                    "DisplayName": "Maxime DEMIAUDE",
+                    "Email": m.demiaude@groupe-remove.com,
+                    "Picture": https://removefrance.sharepoint.com/sites/prevention/_layouts/15/UserPhoto.aspx?Size=L&AccountName=m.demiaude@groupe-remove.com,
+                    "Department": null,
+                    "JobTitle": null
+                },
+                "Editor#Claims": "i:0#.f|membership|m.demiaude@groupe-remove.com",
+                "{Identifier}": "Lists%252fSaisie_inventaire_reborn%252f8_.000",
+                "{IsFolder}": false,
+                "{Thumbnail}": {
+                    "Large": null,
+                    "Medium": null,
+                    "Small": null
+                },
+                "{Link}": https://removefrance.sharepoint.com/sites/prevention/_layouts/15/listform.aspx?PageType=4&ListId=9ae70dee%2D8be3%2D4560%2Da8d1%2D1ba53a5b3c69&ID=8&ContentTypeID=0x0100D6BF31B49C94A54C847E00D3EAA439F80092F01DC2799F2941804B208EEEB592F2,
+                "{Name}": "Armoire",
+                "{FilenameWithExtension}": "Armoire",
+                "{Path}": "Lists/Saisie_inventaire_reborn/",
+                "{FullPath}": "Lists/Saisie_inventaire_reborn/8_.000",
+                "{HasAttachments}": true,
+                "{VersionNumber}": "4.0"
+            }';
+
+            $data = json_decode($temp, true);
+        
             // Récupérer les données
-            $data = json_decode(file_get_contents('php://input'), true);
+            // $data = json_decode(file_get_contents('php://input'), true);
 
             // On stocke les données dans un tableau qui sera envoyé à la base de données
-            dd($data);
+            $item_data = [];
+            $data['title'] ? $item_data['title'] = $data['title'] : $item_data['title'] = null;
+            $item_data['title'] ? $item_data['slug'] = slugify($data['title']) : $item_data['slug'] = null;
+            $data['height'] ? $item_data['height'] = $data['height'] : $item_data['height'] = null;
+            $data['width'] ? $item_data['width'] = $data['width'] : $item_data['width'] = null;
+            $data['depth'] ? $item_data['depth'] = $data['depth'] : $item_data['depth'] = null;
+            $data['weight'] ? $item_data['weight'] = $data['weight'] : $item_data['weight'] = null;
+            $data['brand'] ? $item_data['brand'] = $data['brand'] : $item_data['brand'] = null;
+            $data['reference'] ? $item_data['reference'] = $data['reference'] : $item_data['reference'] = null;
+            $data['material']['Value'] ? $item_data['material'] = $data['material']['Value'] : $item_data['material'] = null;
+            $data['assembly'] ? $item_data['assembly'] = $data['assembly'] : $item_data['assembly'] = null;
+            $data['code_article'] ? $item_data['code_article'] = $data['code_article'] : $item_data['code_article'] = null;
+            $data['trust']['Value'] ? $item_data['trust'] = $data['trust']['Value'] : $item_data['trust'] = null;
+            $data['quantity'] ? $item_data['quantity'] = $data['quantity'] : $item_data['quantity'] = null;
+            $data['description'] ? $item_data['description'] = $data['description'] : $item_data['description'] = null;
+            $data['caption'] ? $item_data['caption'] = $data['caption'] : $item_data['caption'] = null;
+            $data['price_new'] ? $item_data['price_new'] = $data['price_new'] : $item_data['price_new'] = null;
+            $data['price_unite'] ? $item_data['price_unite'] = $data['price_unite'] : $item_data['price_unite'] = null;
+            $data['unite']['Value'] ? $item_data['unite'] = $data['unite']['Value'] : $item_data['unite'] = null;
+            $data['packaging'] ? $item_data['packaging'] = $data['packaging'] : $item_data['packaging'] = null;
+            $data['state']['Value'] ? $item_data['state'] = $data['state']['Value'] : $item_data['state'] = null;
+            $data['carbon_footprint'] ? $item_data['carbon_footprint'] = $data['carbon_footprint'] : $item_data['carbon_footprint'] = null;
+            $data['photos'] = null;
+            $data['category_id'] = null;
+            $data['storage_location'] ? $item_data['storage_location'] = $data['storage_location'] : $item_data['storage_location'] = null;
+            $data['location_id'] = null;
+            $data['available'] ? $item_data['available'] = $data['available'] : $item_data['available'] = 0;
+            $data['availability_date'] = null;
+            $item_data['active'] = 0;
+            $item_data['booked'] = 0;
+            $item_data['created_at'] = date('Y-m-d');
+            $data['sold'] ? $item_data['sold'] = $data['sold'] : $item_data['sold'] = null;
+            $data['sold_at'] ? $item_data['sold_at'] = $data['sold_at'] : $item_data['sold_at'] = null;
+
+            dd($item_data);
 
 
             // On fait l'ajout en base de données
