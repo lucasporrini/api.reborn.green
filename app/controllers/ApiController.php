@@ -495,7 +495,7 @@ class ApiController
         $token = $headers['Authorization'];
         
         if($this->apiModel->middleware_auth($token)) {
-            $temp = `[
+            $temp = '[
                 {
                     "@odata.etag": "\"4\"",
                     "ItemInternalId": "8",
@@ -656,8 +656,7 @@ class ApiController
                     "{HasAttachments}": true,
                     "{VersionNumber}": "2.0"
                 }
-            ]
-            `;
+            ]';
             
             $data = json_decode($temp, true);
         
