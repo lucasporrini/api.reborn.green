@@ -467,8 +467,6 @@ class ApiController
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
             $data = json_decode(file_get_contents('php://input'), true);
-
-            $data['storage_location'] == 'dépôt' ? $data['location_id'] = null : '';
             $data['created_at'] = date('Y-m-d');
 
             // On fait l'ajout en base de données
@@ -492,35 +490,35 @@ class ApiController
 
     public function add_product_from_json()
     {
-        // // On récupère le token dans le header
-        // $headers = apache_request_headers();
-        // $token = $headers['Authorization'];
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
         
-        // if($this->apiModel->middleware_auth($token)) {
-        //     // Récupérer les données
-        //     $data = json_decode(file_get_contents('php://input'), true);
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $data = json_decode(file_get_contents('php://input'), true);
 
-        //     $data['storage_location'] == 'dépôt' ? $data['location_id'] = null : '';
-        //     $data['created_at'] = date('Y-m-d');
+            // On stocke les données dans un tableau qui sera envoyé à la base de données
+            dd($data);
 
-        //     // On fait l'ajout en base de données
-        //     $addedProduct = $this->apiModel->add_product($data);
+
+            // On fait l'ajout en base de données
+            $addedProduct = $this->apiModel->add_product($item_data);
             
-        //     if($addedProduct == null) {
-        //         header('Content-Type: application/json');
-        //         http_response_code(500);
-        //         $json = ['error' => 'Erreur interne'];
-        //         echo json_encode($json, JSON_UNESCAPED_UNICODE);
-        //         exit;
-        //     } else {
-        //         // Retourner les données en json
-        //         header('Content-Type: application/json');
-        //         http_response_code(200);
-        //         echo json_encode(['success' => 'Produit ajouté avec succès', 'id' => $addedProduct], JSON_UNESCAPED_UNICODE);
-        //         exit;
-        //     }
-        // }
-        dd('add_product_from_json');
+            if($addedProduct == null) {
+                header('Content-Type: application/json');
+                http_response_code(500);
+                $json = ['error' => 'Erreur interne'];
+                echo json_encode($json, JSON_UNESCAPED_UNICODE);
+                exit;
+            } else {
+                // Retourner les données en json
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode(['success' => 'Produit ajouté avec succès', 'id' => $addedProduct], JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+        }
     }
 
     public function edit_product($slug)
@@ -532,8 +530,6 @@ class ApiController
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
             $data = json_decode(file_get_contents('php://input'), true);
-
-            $data['storage_location'] == 'dépôt' ? $data['location_id'] = null : '';
             
             // On fait la modification en base de données
             $editedProduct = $this->apiModel->edit_product($slug, $data);
