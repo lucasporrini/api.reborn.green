@@ -578,6 +578,10 @@ class ApiController
             
             $data = json_decode($temp, true);
         
+            if(json_last_error() !== JSON_ERROR_NONE) {
+                dd('Erreur dans le JSON:' . json_last_error_msg());
+            }
+
             // Récupérer les données
             // $data = json_decode(file_get_contents('php://input'), true);
             dd($data);
