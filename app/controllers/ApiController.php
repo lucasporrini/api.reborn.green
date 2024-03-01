@@ -496,21 +496,21 @@ class ApiController
         
         if($this->apiModel->middleware_auth($token)) {
             $temp = '{
-                "@odata.etag": "\"4\"",
-                "ItemInternalId": "8",
-                "ID": 8,
-                "Title": "Armoire",
-                "height": 1.8,
-                "width": 0.95,
-                "depth": 0.45,
-                "weight": 40,
-                "brand": "métalif",
+                "@odata.etag": "\"2\"",
+                "ItemInternalId": "12",
+                "ID": 12,
+                "Title": "Lavabo",
+                "height": 0.8,
+                "width": 0.4,
+                "depth": 0.4,
+                "weight": 12,
+                "brand": "lavabox",
                 "material": {
                     "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
-                    "Id": 3,
-                    "Value": "métal"
+                    "Id": 2,
+                    "Value": "céramique"
                 },
-                "material#Id": 3,
+                "material#Id": 2,
                 "trust": {
                     "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
                     "Id": 3,
@@ -533,13 +533,13 @@ class ApiController
                 "packaging": 1,
                 "state": {
                     "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
-                    "Id": 1,
-                    "Value": "moyen"
+                    "Id": 3,
+                    "Value": "très bon"
                 },
-                "state#Id": 1,
+                "state#Id": 3,
                 "available0": true,
-                "Modified": "2024-02-29T21:36:29Z",
-                "Created": "2024-02-29T21:13:38Z",
+                "Modified": "2024-02-29T21:37:13Z",
+                "Created": "2024-02-29T21:37:13Z",
                 "Author": {
                     "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedUser",
                     "Claims": "i:0#.f|membership|m.demiaude@groupe-remove.com",
@@ -560,20 +560,20 @@ class ApiController
                     "JobTitle": null
                 },
                 "Editor#Claims": "i:0#.f|membership|m.demiaude@groupe-remove.com",
-                "{Identifier}": "Lists%252fSaisie_inventaire_reborn%252f8_.000",
+                "{Identifier}": "Lists%252fSaisie_inventaire_reborn%252f12_.000",
                 "{IsFolder}": false,
                 "{Thumbnail}": {
                     "Large": null,
                     "Medium": null,
                     "Small": null
                 },
-                "{Link}": https://removefrance.sharepoint.com/sites/prevention/_layouts/15/listform.aspx?PageType=4&ListId=9ae70dee%2D8be3%2D4560%2Da8d1%2D1ba53a5b3c69&ID=8&ContentTypeID=0x0100D6BF31B49C94A54C847E00D3EAA439F80092F01DC2799F2941804B208EEEB592F2,
-                "{Name}": "Armoire",
-                "{FilenameWithExtension}": "Armoire",
+                "{Link}": https://removefrance.sharepoint.com/sites/prevention/_layouts/15/listform.aspx?PageType=4&ListId=9ae70dee%2D8be3%2D4560%2Da8d1%2D1ba53a5b3c69&ID=12&ContentTypeID=0x0100D6BF31B49C94A54C847E00D3EAA439F80092F01DC2799F2941804B208EEEB592F2,
+                "{Name}": "Lavabo",
+                "{FilenameWithExtension}": "Lavabo",
                 "{Path}": "Lists/Saisie_inventaire_reborn/",
-                "{FullPath}": "Lists/Saisie_inventaire_reborn/8_.000",
+                "{FullPath}": "Lists/Saisie_inventaire_reborn/12_.000",
                 "{HasAttachments}": true,
-                "{VersionNumber}": "4.0"
+                "{VersionNumber}": "2.0"
             }';
             
             $data = json_decode($temp, true);
