@@ -575,7 +575,7 @@ class ApiController
                 "{HasAttachments}": true,
                 "{VersionNumber}": "4.0"
             }';
-
+            $temp = json_encode($temp);
             $data = json_decode($temp, true);
         
             // Récupérer les données
