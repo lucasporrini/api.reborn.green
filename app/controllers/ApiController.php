@@ -526,11 +526,9 @@ class ApiController
                             "Value": "u"
                         }
                     ],
-                    unite@odata.type: "#Collection(Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference)",
                     "unite#Id": [
                         4
                     ],
-                    unite#Id@odata.type: "#Collection(Int64)",
                     "packaging": 1,
                     "state": {
                         "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
@@ -575,86 +573,6 @@ class ApiController
                     "{FullPath}": "Lists/Saisie_inventaire_reborn/8_.000",
                     "{HasAttachments}": true,
                     "{VersionNumber}": "4.0"
-                },
-                {
-                    "@odata.etag": "\"2\"",
-                    "ItemInternalId": "12",
-                    "ID": 12,
-                    "Title": "Lavabo",
-                    "height": 0.8,
-                    "width": 0.4,
-                    "depth": 0.4,
-                    "weight": 12,
-                    "brand": "lavabox",
-                    "material": {
-                        "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
-                        "Id": 2,
-                        "Value": "céramique"
-                    },
-                    "material#Id": 2,
-                    "trust": {
-                        "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
-                        "Id": 3,
-                        "Value": "4"
-                    },
-                    "trust#Id": 3,
-                    "quantity": 1,
-                    "unite": [
-                        {
-                            "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
-                            "Id": 4,
-                            "Value": "u"
-                        }
-                    ],
-                    unite@odata.type: "#Collection(Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference)",
-                    "unite#Id": [
-                        4
-                    ],
-                    unite#Id@odata.type: "#Collection(Int64)",
-                    "packaging": 1,
-                    "state": {
-                        "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
-                        "Id": 3,
-                        "Value": "très bon"
-                    },
-                    "state#Id": 3,
-                    "available0": true,
-                    "Modified": "2024-02-29T21:37:13Z",
-                    "Created": "2024-02-29T21:37:13Z",
-                    "Author": {
-                        "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedUser",
-                        "Claims": "i:0#.f|membership|m.demiaude@groupe-remove.com",
-                        "DisplayName": "Maxime DEMIAUDE",
-                        "Email": m.demiaude@groupe-remove.com,
-                        "Picture": https://removefrance.sharepoint.com/sites/prevention/_layouts/15/UserPhoto.aspx?Size=L&AccountName=m.demiaude@groupe-remove.com,
-                        "Department": null,
-                        "JobTitle": null
-                    },
-                    "Author#Claims": "i:0#.f|membership|m.demiaude@groupe-remove.com",
-                    "Editor": {
-                        "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedUser",
-                        "Claims": "i:0#.f|membership|m.demiaude@groupe-remove.com",
-                        "DisplayName": "Maxime DEMIAUDE",
-                        "Email": m.demiaude@groupe-remove.com,
-                        "Picture": https://removefrance.sharepoint.com/sites/prevention/_layouts/15/UserPhoto.aspx?Size=L&AccountName=m.demiaude@groupe-remove.com,
-                        "Department": null,
-                        "JobTitle": null
-                    },
-                    "Editor#Claims": "i:0#.f|membership|m.demiaude@groupe-remove.com",
-                    "{Identifier}": "Lists%252fSaisie_inventaire_reborn%252f12_.000",
-                    "{IsFolder}": false,
-                    "{Thumbnail}": {
-                        "Large": null,
-                        "Medium": null,
-                        "Small": null
-                    },
-                    "{Link}": https://removefrance.sharepoint.com/sites/prevention/_layouts/15/listform.aspx?PageType=4&ListId=9ae70dee%2D8be3%2D4560%2Da8d1%2D1ba53a5b3c69&ID=12&ContentTypeID=0x0100D6BF31B49C94A54C847E00D3EAA439F80092F01DC2799F2941804B208EEEB592F2,
-                    "{Name}": "Lavabo",
-                    "{FilenameWithExtension}": "Lavabo",
-                    "{Path}": "Lists/Saisie_inventaire_reborn/",
-                    "{FullPath}": "Lists/Saisie_inventaire_reborn/12_.000",
-                    "{HasAttachments}": true,
-                    "{VersionNumber}": "2.0"
                 }
             ]';
             
