@@ -495,7 +495,8 @@ class ApiController
         $token = $headers['Authorization'];
         
         if($this->apiModel->middleware_auth($token)) {
-            $temp = '{
+            $temp = '[
+                {
                 "@odata.etag": "\"2\"",
                 "ItemInternalId": "12",
                 "ID": 12,
@@ -525,10 +526,11 @@ class ApiController
                         "Value": "u"
                     }
                 ],
+                unite@odata.type: "#Collection(Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference)",
                 "unite#Id": [
                     4
                 ],
-                
+                unite#Id@odata.type: "#Collection(Int64)",
                 "packaging": 1,
                 "state": {
                     "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
@@ -573,13 +575,13 @@ class ApiController
                 "{FullPath}": "Lists/Saisie_inventaire_reborn/12_.000",
                 "{HasAttachments}": true,
                 "{VersionNumber}": "2.0"
-            }';
+            }]';
             
             $data = json_decode($temp, true);
         
             // Récupérer les données
             // $data = json_decode(file_get_contents('php://input'), true);
-            dd(json_decode($temp, true));
+            dd($data);
             // On stocke les données dans un tableau qui sera envoyé à la base de données
             $item_data = [];
             $data['title'] ? $item_data['title'] = $data['title'] : $item_data['title'] = null;
