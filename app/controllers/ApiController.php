@@ -525,7 +525,7 @@ class ApiController
                         "Value": "u"
                     }
                 ],
-                unite@odata.type: "#Collection(Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference)",
+                
                 "unite#Id": [
                     4
                 ],
