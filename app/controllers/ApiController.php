@@ -495,8 +495,7 @@ class ApiController
         $token = $headers['Authorization'];
         
         if($this->apiModel->middleware_auth($token)) {
-            $temp = '[
-                {
+            $temp = '{
                     "@odata.etag": "\"4\"",
                     "ItemInternalId": "8",
                     "ID": 8,
@@ -573,8 +572,7 @@ class ApiController
                     "{FullPath}": "Lists/Saisie_inventaire_reborn/8_.000",
                     "{HasAttachments}": true,
                     "{VersionNumber}": "4.0"
-                }
-            ]';
+                }';
             
             $data = json_decode($temp, true);
         
