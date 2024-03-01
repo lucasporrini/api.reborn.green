@@ -529,7 +529,7 @@ class ApiController
                 "unite#Id": [
                     4
                 ],
-                unite#Id@odata.type: "#Collection(Int64)",
+                
                 "packaging": 1,
                 "state": {
                     "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
