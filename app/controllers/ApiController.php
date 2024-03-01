@@ -579,7 +579,7 @@ class ApiController
         
             // Récupérer les données
             // $data = json_decode(file_get_contents('php://input'), true);
-            dd($data);
+            dd(json_decode($temp, true));
             // On stocke les données dans un tableau qui sera envoyé à la base de données
             $item_data = [];
             $data['title'] ? $item_data['title'] = $data['title'] : $item_data['title'] = null;
