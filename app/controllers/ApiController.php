@@ -23,7 +23,7 @@ class ApiController
 
     public function home()
     {
-        echo 'Welcome to the API !';
+        echo 'Welcome to the Reborn API !';
     }
 
     public function get_header()
