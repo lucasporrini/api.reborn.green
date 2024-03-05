@@ -33,6 +33,4 @@ $router->post('/add-product-from-json', [$ApiController, 'add_product_from_json'
 $router->post('/edit-product/:slug', [$ApiController, 'edit_product']);
 $router->post('/edit-product-photo/:slug', [$ApiController, 'edit_product_photo']);
 
-$router->post('/github_webhook', [$ApiController, 'github_webhook']);
-
 $router->run();
