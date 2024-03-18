@@ -413,6 +413,11 @@ class ApiController
         }
     }
 
+    public function sold_products()
+    {
+       dd('sold_products'); 
+    }
+
     public function add_product_from_json()
     {
         // On récupère le token dans le header
