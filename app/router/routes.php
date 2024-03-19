@@ -24,6 +24,8 @@ $router->get('/address', [$ApiController, 'get_company_address']);
 $router->get('/locations', [$ApiController, 'get_locations']);
 $router->get('/location/:id', [$ApiController, 'get_location_by_id']);
 
+$router->get('/clients', [$ApiController, 'get_clients']);
+
 // Route pour gérer les produits
 $router->get('/delete-product/:slug', [$ApiController, 'delete_product']);
 $router->get('/enable-product/:slug', [$ApiController, 'enable_product']);

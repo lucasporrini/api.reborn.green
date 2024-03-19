@@ -310,6 +310,22 @@ class ApiController
         }
     }
 
+    public function get_clients()
+    {
+        // On récupère les données
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $clients = $this->apiModel->get_clients();
+
+            // Retourner les données en json
+            header('Content-Type: application/json');
+            echo json_encode($clients, JSON_UNESCAPED_UNICODE);
+        }
+    }
+
     public function delete_product($slug)
     {
         // On récupère le token dans le header
