@@ -431,7 +431,36 @@ class ApiController
 
     public function sold_products()
     {
-       dd('sold_products'); 
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+        
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $data = json_decode(file_get_contents('php://input'), true);
+
+            // Récupérer l'id du produit à partir du slug
+            $product = $this->apiModel->get_products_with_conditions(['slug' => $data['slug']])[0];
+
+            $data['product_id'] = $product['id'];
+            $data['sold_at'] = date('Y-m-d');
+
+            // On fait la modification en base de données
+            $editedProduct = $this->apiModel->sold_products($data);
+
+            if($editedProduct !== null) {
+                header('Content-Type: application/json');
+                http_response_code(500);
+                echo json_encode(['error' => 'Erreur interne']);
+                exit;
+            } else {
+                // Retourner les données en json
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode(['success' => 'Produit vendu avec succès'], JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+        }
     }
 
     public function add_product_from_json()

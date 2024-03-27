@@ -186,4 +186,9 @@ class ApiModel
     {
         return $this->db->update('products', ['photos' => $photos], ['slug' => $slug]);
     }
+
+    public function sold_products($data)
+    {
+        return $this->db->insert('sold_products', $data);
+    }
 }
