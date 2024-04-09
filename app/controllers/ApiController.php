@@ -474,7 +474,7 @@ class ApiController
             $data = json_decode(file_get_contents('php://input'), true);
 
             // On fait la modification en base de données
-            dd($data['items']);
+            dd($data);
             $editedProduct = $this->apiModel->sales($data);
 
             if($editedProduct !== null) {
