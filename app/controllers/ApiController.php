@@ -463,6 +463,11 @@ class ApiController
         }
     }
 
+    public function sales()
+    {
+        dd($POST);
+    }
+
     public function add_product_from_json()
     {
         // On récupère le token dans le header
