@@ -479,8 +479,8 @@ class ApiController
 
 
             foreach($data['items'] as $item) {
-                dd($item);
-                $product = $this->apiModel->get_products_with_conditions(['slug' => $data['slug']])[0];
+                $product = $this->apiModel->get_products_with_conditions(['slug' => $item['slug']])[0];
+                dd($product);
                 
             }
             // On récupère le produit qu'on ajoute avec l'id client dans "sold_products"
