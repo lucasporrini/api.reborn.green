@@ -187,9 +187,9 @@ class ApiModel
         return $this->db->update('products', ['photos' => $photos], ['slug' => $slug]);
     }
 
-    public function sold_products($clientId, $productId, $quantity, $soldAt)
+    public function sold_products($data)
     {
-        return $this->db->insert('sold_products', ['client_id' => $clientId, 'product_id' => $productId, 'quantity' => $quantity, 'sold_at' => $soldAt]);
+        return $this->db->insert('sold_products', $data);
     }
 
     public function decrease_product_quantity($productId, $quantity)
