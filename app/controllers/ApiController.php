@@ -474,8 +474,18 @@ class ApiController
             $data = json_decode(file_get_contents('php://input'), true);
 
             // On fait la modification en base de données
-            dd($data);
-            $editedProduct = $this->apiModel->sales($data);
+            
+            // $editedProduct = $this->apiModel->sales($data);
+
+
+            foreach($data['items'] as $item) {
+                $product = $this->apiModel->get_products_with_conditions(['slug' => $data['slug']])[0];
+                dd($product);
+                
+            }
+            // On récupère le produit qu'on ajoute avec l'id client dans "sold_products"
+
+            // On soustrait la quantité vendue à la quantité disponible
 
             if($editedProduct !== null) {
                 header('Content-Type: application/json');
