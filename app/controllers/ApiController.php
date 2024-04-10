@@ -475,6 +475,15 @@ class ApiController
 
             foreach($data['items'] as $item) {
                 $product = $this->apiModel->get_products_with_conditions(['slug' => $item['slug']])[0];
+
+                if($product['quantity'] < $item['quantity']) {
+                    write_log('sales', 'Error', 'Quantité insuffisante', 'red');
+                    header('Content-Type: application/json');
+                    http_response_code(500);
+                    echo json_encode(['error' => 'Quantité insuffisante'], JSON_UNESCAPED_UNICODE);
+                    exit;
+                }
+
                 $soldProduct = $this->apiModel->sold_products(['client_id' => $data['clientId'], 'product_id' => $product['id'], 'quantity' => $item['quantity'], 'sold_at' => date('Y-m-d')]);
                 $decreaseQuantityProduct = $this->apiModel->decrease_product_quantity($product['id'], $item['quantity']);
                 write_log('sales', 'Success', 'Vente effectuée avec succès', 'green');
