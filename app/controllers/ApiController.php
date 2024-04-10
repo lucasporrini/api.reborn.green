@@ -476,7 +476,7 @@ class ApiController
             foreach($data['items'] as $item) {
                 $product = $this->apiModel->get_products_with_conditions(['slug' => $item['slug']])[0];
                 $soldProduct = $this->apiModel->sold_products(['client_id' => $data['clientId'], 'product_id' => $product['id'], 'quantity' => $item['quantity'], 'sold_at' => date('Y-m-d')]);
-                $decreaseQuantityProduct = $this->apiModel->decrease_quantity_product($product['id'], $item['quantity']);
+                $decreaseQuantityProduct = $this->apiModel->decrease_product_quantity($product['id'], $item['quantity']);
                 write_log('sales', 'Success', 'Vente effectuée avec succès', 'green');
             }
 
