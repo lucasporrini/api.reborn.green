@@ -191,4 +191,11 @@ class ApiModel
     {
         return $this->db->insert('sold_products', ['client_id' => $clientId, 'product_id' => $productId, 'quantity' => $quantity, 'sold_at' => $soldAt]);
     }
+
+    public function decrease_product_quantity($productId, $quantity)
+    {
+        $product = $this->db->simpleSelect('*', 'products', ['id' => $productId]);
+        $newQuantity = $product['quantity'] - $quantity;
+        return $this->db->update('products', ['quantity' => $newQuantity], ['id' => $productId]);
+    }
 }

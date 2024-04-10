@@ -473,32 +473,18 @@ class ApiController
             // Récupérer les données
             $data = json_decode(file_get_contents('php://input'), true);
 
-            // On fait la modification en base de données
-            
-            // $editedProduct = $this->apiModel->sales($data);
-
-
             foreach($data['items'] as $item) {
                 $product = $this->apiModel->get_products_with_conditions(['slug' => $item['slug']])[0];
-                dd($product);
-                
+                $soldProduct = $this->apiModel->sold_products(['client_id' => $data['clientId'], 'product_id' => $product['id'], 'quantity' => $item['quantity'], 'sold_at' => date('Y-m-d')]);
+                $decreaseQuantityProduct = $this->apiModel->decrease_quantity_product($product['id'], $item['quantity']);
+                write_log('sales', 'Success', 'Vente effectuée avec succès', 'green');
             }
-            // On récupère le produit qu'on ajoute avec l'id client dans "sold_products"
 
-            // On soustrait la quantité vendue à la quantité disponible
-
-            if($editedProduct !== null) {
-                header('Content-Type: application/json');
-                http_response_code(500);
-                echo json_encode(['error' => 'Erreur interne']);
-                exit;
-            } else {
-                // Retourner les données en json
-                header('Content-Type: application/json');
-                http_response_code(200);
-                echo json_encode(['success' => 'Vente effectuée avec succès'], JSON_UNESCAPED_UNICODE);
-                exit;
-            }
+            // Retourner les données en json
+            header('Content-Type: application/json');
+            http_response_code(200);
+            echo json_encode(['success' => 'Vente effectuée avec succès'], JSON_UNESCAPED_UNICODE);
+            exit;
         }
     }
 
