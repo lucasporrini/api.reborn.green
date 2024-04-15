@@ -439,10 +439,6 @@ class ApiController
             // Récupérer les données
             $data = json_decode(file_get_contents('php://input'), true);
 
-            // On convertit les données en objet
-            $data = (object) $data;
-            dd($data);
-
             // On fait l'ajout en base de données
             $addedProduct = $this->apiModel->add_product($data);
             
