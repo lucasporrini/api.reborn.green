@@ -434,6 +434,7 @@ class ApiController
         // On récupère le token dans le header
         $headers = apache_request_headers();
         $token = $headers['Authorization'];
+        dd($token);
         
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
@@ -505,83 +506,34 @@ class ApiController
         
         if($this->apiModel->middleware_auth($token)) {
             $temp = '{
-                    "@odata.etag": "\"4\"",
-                    "ItemInternalId": "8",
-                    "ID": 8,
-                    "Title": "Armoire",
-                    "height": 1.8,
-                    "width": 0.95,
-                    "depth": 0.45,
-                    "weight": 40,
-                    "brand": "métalif",
-                    "material": {
-                        "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
-                        "Id": 3,
-                        "Value": "métal"
-                    },
-                    "material#Id": 3,
-                    "trust": {
-                        "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
-                        "Id": 3,
-                        "Value": "4"
-                    },
-                    "trust#Id": 3,
-                    "quantity": 1,
-                    "unite": [
-                        {
-                            "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
-                            "Id": 4,
-                            "Value": "u"
-                        }
-                    ],
-                    "unite#Id": [
-                        4
-                    ],
-                    "packaging": 1,
-                    "state": {
-                        "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedReference",
-                        "Id": 1,
-                        "Value": "moyen"
-                    },
-                    "state#Id": 1,
-                    "available0": true,
-                    "Modified": "2024-02-29T21:36:29Z",
-                    "Created": "2024-02-29T21:13:38Z",
-                    "Author": {
-                        "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedUser",
-                        "Claims": "i:0#.f|membership|m.demiaude@groupe-remove.com",
-                        "DisplayName": "Maxime DEMIAUDE",
-                        "Email": m.demiaude@groupe-remove.com,
-                        "Picture": "https://removefrance.sharepoint.com/sites/prevention/_layouts/15/UserPhoto.aspx?Size=L&AccountName=m.demiaude@groupe-remove.com",
-                        "Department": null,
-                        "JobTitle": null
-                    },
-                    "Author#Claims": "i:0#.f|membership|m.demiaude@groupe-remove.com",
-                    "Editor": {
-                        "@odata.type": "#Microsoft.Azure.Connectors.SharePoint.SPListExpandedUser",
-                        "Claims": "i:0#.f|membership|m.demiaude@groupe-remove.com",
-                        "DisplayName": "Maxime DEMIAUDE",
-                        "Email": m.demiaude@groupe-remove.com,
-                        "Picture": "https://removefrance.sharepoint.com/sites/prevention/_layouts/15/UserPhoto.aspx?Size=L&AccountName=m.demiaude@groupe-remove.com",
-                        "Department": null,
-                        "JobTitle": null
-                    },
-                    "Editor#Claims": "i:0#.f|membership|m.demiaude@groupe-remove.com",
-                    "{Identifier}": "Lists%252fSaisie_inventaire_reborn%252f8_.000",
-                    "{IsFolder}": false,
-                    "{Thumbnail}": {
-                        "Large": null,
-                        "Medium": null,
-                        "Small": null
-                    },
-                    "{Link}": "https://removefrance.sharepoint.com/sites/prevention/_layouts/15/listform.aspx?PageType=4&ListId=9ae70dee%2D8be3%2D4560%2Da8d1%2D1ba53a5b3c69&ID=8&ContentTypeID=0x0100D6BF31B49C94A54C847E00D3EAA439F80092F01DC2799F2941804B208EEEB592F2",
-                    "{Name}": "Armoire",
-                    "{FilenameWithExtension}": "Armoire",
-                    "{Path}": "Lists/Saisie_inventaire_reborn/",
-                    "{FullPath}": "Lists/Saisie_inventaire_reborn/8_.000",
-                    "{HasAttachments}": true,
-                    "{VersionNumber}": "4.0"
-                }';
+                "title": "Chaise haute ",
+                "height": "25",
+                "width": "12",
+                "depth": "15",
+                "weight": "7",
+                "brand": "Bébé ",
+                "reference": " ",
+                "material": "bois",
+                "assembly": "",
+                "code_article": " ",
+                "trust": "4",
+                "quantity": "7",
+                "description": " ",
+                "caption": " ",
+                "price_new": " ",
+                "price_unite": " ",
+                "unite": "",
+                "packaging": "1",
+                "state": "très bon",
+                "carbon_footprint": " ",
+                "slug": " ",
+                "storage_location": "Chantier",
+                "available": "True",
+                "location_name": "SG555",
+                "location_place": "Croissy beaubourg ",
+                "location_adresse": "19 Boulevard Georges bidault"
+              }
+              ';
             
             $data = json_decode($temp, true);
         
