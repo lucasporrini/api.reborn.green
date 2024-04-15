@@ -434,6 +434,7 @@ class ApiController
         // On récupère le token dans le header
         $headers = apache_request_headers();
         $token = $headers['Authorization'];
+        dd($token);
         
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
