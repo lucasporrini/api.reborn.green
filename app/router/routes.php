@@ -34,7 +34,7 @@ $router->post('/add-product', [$ApiController, 'add_product']);
 $router->post('/add-product-from-json', [$ApiController, 'add_product_from_json']);
 $router->post('/edit-product/:slug', [$ApiController, 'edit_product']);
 $router->post('/edit-product-photo/:slug', [$ApiController, 'edit_product_photo']);
-$router->post('/sold-products', [$ApiController, 'sold_products']);
+$router->post('/sold_products', [$ApiController, 'sold_products']);
 $router->post('/sales', [$ApiController, 'sales']);
 
 $router->run();
