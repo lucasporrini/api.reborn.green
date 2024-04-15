@@ -438,6 +438,7 @@ class ApiController
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
             $data = json_decode(file_get_contents('php://input'), true);
+            $data['created_at'] = date('Y-m-d');
 
             // On fait l'ajout en base de données
             $addedProduct = $this->apiModel->add_product($data);
