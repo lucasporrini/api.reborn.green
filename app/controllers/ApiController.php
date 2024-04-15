@@ -438,6 +438,9 @@ class ApiController
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
             $data = json_decode(file_get_contents('php://input'), true);
+
+            // On convertit les données en objet
+            $data = (object) $data;
             dd($data);
 
             // On fait l'ajout en base de données
