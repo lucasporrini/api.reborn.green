@@ -438,19 +438,7 @@ class ApiController
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
             $data = json_decode(file_get_contents('php://input'), true);
-            if (is_string($data)) {
-                // Tentative de décoder à nouveau si c'est encore une chaîne
-                $data = json_decode($data, true);
-            }
             
-            if (!is_array($data)) {
-                error_log('Data is not an array: ' . var_export($data, true));
-                // Envoyer une réponse d'erreur appropriée
-                http_response_code(400);
-                echo json_encode(['error' => 'Invalid data format']);
-                exit;
-            }
-
             dd($data);
 
             // On fait l'ajout en base de données
