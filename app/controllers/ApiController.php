@@ -439,7 +439,7 @@ class ApiController
             // Récupérer les données
             $data = json_decode(file_get_contents('php://input'), true);
             if(!is_array($data)) {
-                error_log('Received data is not an array:' . var_export($data, true));
+                dd($data);
             }
 
             // On fait l'ajout en base de données
