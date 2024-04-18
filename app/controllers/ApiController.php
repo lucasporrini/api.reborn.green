@@ -441,7 +441,6 @@ class ApiController
             if(!is_array($data)) {
                 error_log('Received data is not an array:' . var_export($data, true));
             }
-            $data['created_at'] = date('Y-m-d');
 
             // On fait l'ajout en base de données
             $addedProduct = $this->apiModel->add_product($data);
