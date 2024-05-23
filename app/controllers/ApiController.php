@@ -506,6 +506,15 @@ class ApiController
 
             $sales = $this->apiModel->get_sales();
 
+            // Pour chaque vente on récupère le produit et l'acheteur
+            foreach($sales as $key => $sale) {
+                $product = $this->apiModel->get_products_with_conditions(['id' => $sale['product_id']])[0];
+                $client = $this->apiModel->get_clients($sale['client_id'])[0];
+
+                $sales[$key]['product'] = $product;
+                $sales[$key]['client'] = $client;
+            }
+
             // Retourner les données en json
             header('Content-Type: application/json');
             echo json_encode($sales, JSON_UNESCAPED_UNICODE);
