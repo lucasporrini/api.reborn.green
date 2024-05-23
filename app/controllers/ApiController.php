@@ -494,6 +494,24 @@ class ApiController
         }
     }
 
+    public function get_sales()
+    {
+        // Afficher les données
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $data = json_decode(file_get_contents('php://input'), true);
+
+            $sales = $this->apiModel->get_sales($data['clientId']);
+
+            // Retourner les données en json
+            header('Content-Type: application/json');
+            echo json_encode($sales, JSON_UNESCAPED_UNICODE);
+        }
+    }
+
     public function edit_product($slug)
     {
         // On récupère le token dans le header
