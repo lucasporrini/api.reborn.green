@@ -198,4 +198,9 @@ class ApiModel
         $newQuantity = $product['quantity'] - $quantity;
         return $this->db->update('products', ['quantity' => $newQuantity], ['id' => $productId]);
     }
+
+    public function get_sales()
+    {
+        return $this->db->select('*', 'sold_products');
+    }
 }

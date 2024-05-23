@@ -504,7 +504,7 @@ class ApiController
             // Récupérer les données
             $data = json_decode(file_get_contents('php://input'), true);
 
-            $sales = $this->apiModel->get_sales($data['clientId']);
+            $sales = $this->apiModel->get_sales();
 
             // Retourner les données en json
             header('Content-Type: application/json');
