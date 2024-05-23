@@ -36,6 +36,6 @@ $router->post('/edit-product/:slug', [$ApiController, 'edit_product']);
 $router->post('/edit-product-photo/:slug', [$ApiController, 'edit_product_photo']);
 $router->post('/add_product_from_app', [$ApiController, 'add_product_from_app']);
 $router->post('/sales', [$ApiController, 'sales']);
-$router->post('/get_sales', [$ApiController, 'get_sales']);
+$router->get('/get_sales', [$ApiController, 'get_sales']);
 
 $router->run();
