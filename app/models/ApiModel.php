@@ -203,4 +203,9 @@ class ApiModel
     {
         return $this->db->select('*', 'sold_products');
     }
+
+    public function get_users()
+    {
+        return $this->db->select('*', 'users');
+    }
 }

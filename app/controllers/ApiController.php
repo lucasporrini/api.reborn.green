@@ -494,6 +494,22 @@ class ApiController
         }
     }
 
+    public function get_users()
+    {
+        // On récupère les données
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $users = $this->apiModel->get_users();
+
+            // Retourner les données en json
+            header('Content-Type: application/json');
+            echo json_encode($users, JSON_UNESCAPED_UNICODE);
+        }
+    }
+
     public function get_sales()
     {
         // Afficher les données
