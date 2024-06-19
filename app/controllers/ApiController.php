@@ -624,4 +624,10 @@ class ApiController
             }
         }
     }
+
+    public function edit_profile($id, $data)
+    {
+        print_r($id);
+        print_r($data);
+    }
 }
