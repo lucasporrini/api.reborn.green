@@ -627,6 +627,8 @@ class ApiController
 
     public function edit_profile($id, $data)
     {
+        header('Content-Type: application/json');
+        http_response_code(500);
         echo 'edit_profile';
         exit;
     }
