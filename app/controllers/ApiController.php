@@ -625,13 +625,16 @@ class ApiController
         }
     }
 
-    public function edit_profile($id, $data)
+    public function edit_profile($id)
     {
         // On récupère le token dans le header
         $headers = apache_request_headers();
         $token = $headers['Authorization'];
         
         if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $data = json_decode(file_get_contents('php://input'), true);
+
             header('Content-Type: application/json');
             http_response_code(500);
             echo 'edit_profile';
