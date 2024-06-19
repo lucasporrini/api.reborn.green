@@ -637,7 +637,7 @@ class ApiController
 
             header('Content-Type: application/json');
             http_response_code(500);
-            echo 'edit_profile';
+            echo json_encode(['success' => 'Utilisateur modifiée avec succès'], JSON_UNESCAPED_UNICODE);
             exit;
         }
     }
