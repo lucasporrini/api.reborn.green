@@ -39,5 +39,6 @@ $router->post('/sales', [$ApiController, 'sales']);
 $router->get('/get_sales', [$ApiController, 'get_sales']);
 $router->get('/users', [$ApiController, 'get_users']);
 $router->get('/category/:id', [$ApiController, 'get_category_by_id']);
+$router->get('/category-slug/:slug', [$ApiController, 'get_category_by_slug']);
 
 $router->run();

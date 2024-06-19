@@ -175,6 +175,22 @@ class ApiController
         }
     }
 
+    public function get_category_by_slug($slug)
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+        
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $category = $this->apiModel->get_category_by_slug($slug);
+
+            // Retourner les données en json
+            header('Content-Type: application/json');
+            echo json_encode($category, JSON_UNESCAPED_UNICODE);
+        }
+    }
+
     public function get_products_by_category($cat_id)
     {
         // On récupère le token dans le header

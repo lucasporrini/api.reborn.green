@@ -111,6 +111,11 @@ class ApiModel
         return $this->db->simpleSelect('*', 'categories', ['id' => $id]);
     }
 
+    public function get_category_by_slug($slug)
+    {
+        return $this->db->simpleSelect('*', 'categories', ['slug' => $slug]);
+    }
+
     public function get_products_by_category($cat_id)
     {
         return $this->db->select('*', 'products', ['category_id' => $cat_id]);
