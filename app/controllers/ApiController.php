@@ -641,7 +641,7 @@ class ApiController
             header('Content-Type: application/json');
             http_response_code(500);
             // echo json_encode(['success' => 'Utilisateur modifiée avec succès'], JSON_UNESCAPED_UNICODE);
-            echo $editedUser;
+            echo json_encode($editedUser, JSON_UNESCAPED_UNICODE);
             exit;
         }
     }
