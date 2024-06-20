@@ -633,7 +633,7 @@ class ApiController
 
         header('Content-Type: application/json');
         http_response_code(500);
-        echo "coucou";
+        echo json_encode($token);
         exit;
         
         if($this->apiModel->middleware_auth($token)) {
