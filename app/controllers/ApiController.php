@@ -635,10 +635,13 @@ class ApiController
             // Récupérer les données
             $data = json_decode(file_get_contents('php://input'), true);
 
+            // On fait la modification en base de données
+            $editedUser = $this->apiModel->edit_profile($data);
+
             header('Content-Type: application/json');
             http_response_code(500);
             // echo json_encode(['success' => 'Utilisateur modifiée avec succès'], JSON_UNESCAPED_UNICODE);
-            echo $data;
+            echo $editedUser;
             exit;
         }
     }
