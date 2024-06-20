@@ -630,12 +630,18 @@ class ApiController
         // On récupère le token dans le header
         $headers = apache_request_headers();
         $token = $headers['Authorization'];
+
+        header('Content-Type: application/json');
+        http_response_code(500);
         echo "coucou";
         exit;
         
         if($this->apiModel->middleware_auth($token)) {
             // Récupérer les données
             $data = json_decode(file_get_contents('php://input'), true);
+
+            header('Content-Type: application/json');
+            http_response_code(500);
             echo json_encode($data);
             exit;
             // On fait la modification en base de données
