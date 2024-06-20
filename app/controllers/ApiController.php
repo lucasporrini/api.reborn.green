@@ -625,7 +625,7 @@ class ApiController
         }
     }
 
-    public function edit_profile($id)
+    public function edit_profile()
     {
         // On récupère le token dans le header
         $headers = apache_request_headers();
@@ -637,7 +637,8 @@ class ApiController
 
             header('Content-Type: application/json');
             http_response_code(500);
-            echo json_encode(['success' => 'Utilisateur modifiée avec succès'], JSON_UNESCAPED_UNICODE);
+            // echo json_encode(['success' => 'Utilisateur modifiée avec succès'], JSON_UNESCAPED_UNICODE);
+            echo $data;
             exit;
         }
     }
