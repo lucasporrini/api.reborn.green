@@ -628,30 +628,34 @@ class ApiController
     public function edit_profile()
     {
         // On récupère le token dans le header
-        $headers = apache_request_headers();
-        $token = $headers['Authorization'];
+        // $headers = apache_request_headers();
+        // $token = $headers['Authorization'];
 
+        // header('Content-Type: application/json');
+        // http_response_code(500);
+        // echo json_encode($token);
+        // exit;
+        
+        // if($this->apiModel->middleware_auth($token)) {
+        //     // Récupérer les données
+        //     $data = json_decode(file_get_contents('php://input'), true);
+
+        //     header('Content-Type: application/json');
+        //     http_response_code(500);
+        //     echo json_encode($data);
+        //     exit;
+        //     // On fait la modification en base de données
+        //     $editedUser = $this->apiModel->edit_profile($data);
+
+        //     header('Content-Type: application/json');
+        //     http_response_code(500);
+        //     // echo json_encode(['success' => 'Utilisateur modifiée avec succès'], JSON_UNESCAPED_UNICODE);
+        //     echo json_encode($editedUser, JSON_UNESCAPED_UNICODE);
+        //     exit;
+        // }
         header('Content-Type: application/json');
         http_response_code(500);
-        echo json_encode($token);
+        echo 'edit_profile';
         exit;
-        
-        if($this->apiModel->middleware_auth($token)) {
-            // Récupérer les données
-            $data = json_decode(file_get_contents('php://input'), true);
-
-            header('Content-Type: application/json');
-            http_response_code(500);
-            echo json_encode($data);
-            exit;
-            // On fait la modification en base de données
-            $editedUser = $this->apiModel->edit_profile($data);
-
-            header('Content-Type: application/json');
-            http_response_code(500);
-            // echo json_encode(['success' => 'Utilisateur modifiée avec succès'], JSON_UNESCAPED_UNICODE);
-            echo json_encode($editedUser, JSON_UNESCAPED_UNICODE);
-            exit;
-        }
     }
 }
