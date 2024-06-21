@@ -219,8 +219,8 @@ class ApiModel
         return $this->db->select('*', 'users');
     }
 
-    public function edit_profile($data)
+    public function edit_profile($id, $data)
     {
-        return $this->db->update('users', $data, ['id' => $data['id']]);
+        return $this->db->update('users', $data, ['id' => $id]);
     }
 }
