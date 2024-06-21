@@ -662,7 +662,7 @@ class ApiController
         if($this->apiModel->middleware_auth($token)) {
             // On fait la suppression en base de données
             $deletedUser = $this->apiModel->delete_profile($id);
-            dd($deletedUser);
+            
             if($deletedUser !== null) {
                 header('Content-Type: application/json');
                 http_response_code(500);
