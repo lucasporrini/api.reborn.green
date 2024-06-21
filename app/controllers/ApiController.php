@@ -653,19 +653,19 @@ class ApiController
         }
     }
 
-    public function delete_profile($id)
+    public function delete_profile()
     {
         // On récupère le token dans le header
         $headers = apache_request_headers();
         $token = $headers['Authorization'];
         
         if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $data = json_decode(file_get_contents('php://input'), true);
+
             // On fait la suppression en base de données
-            $deletedUser = $this->apiModel->delete_profile($id);
-            header('Content-Type: application/json');
-            http_response_code(500);
-            echo json_encode($deletedUser, JSON_UNESCAPED_UNICODE);
-            exit;
+            $deletedUser = $this->apiModel->delete_profile($data['id']);
+            
             if($deletedUser !== null) {
                 header('Content-Type: application/json');
                 http_response_code(500);
