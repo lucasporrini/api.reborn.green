@@ -665,7 +665,10 @@ class ApiController
 
             // On fait la suppression en base de données
             $deletedUser = $this->apiModel->delete_profile($data['id']);
-            
+            header('Content-Type: application/json');
+            http_response_code(200);
+            echo json_encode($data, JSON_UNESCAPED_UNICODE);
+            exit;
             if($deletedUser !== null) {
                 header('Content-Type: application/json');
                 http_response_code(500);
