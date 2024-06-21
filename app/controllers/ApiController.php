@@ -653,6 +653,31 @@ class ApiController
         }
     }
 
+    public function delete_profile($id)
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+        
+        if($this->apiModel->middleware_auth($token)) {
+            // On fait la suppression en base de données
+            $deletedUser = $this->apiModel->delete_profile($id);
+
+            if($deletedUser !== null) {
+                header('Content-Type: application/json');
+                http_response_code(500);
+                echo json_encode(['error' => 'Erreur interne']);
+                exit;
+            } else {
+                // Retourner les données en json
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode(['success' => 'Utilisateur supprimé avec succès'], JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+        }
+    }
+
     public function create_profile()
     {
         // On récupère le token dans le header

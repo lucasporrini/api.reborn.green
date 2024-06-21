@@ -42,5 +42,6 @@ $router->get('/category/:id', [$ApiController, 'get_category_by_id']);
 $router->get('/category-slug/:slug', [$ApiController, 'get_category_by_slug']);
 $router->post('/edit-user/:id', [$ApiController, 'edit_profile']);
 $router->post('/create-user', [$ApiController, 'create_profile']);
+$router->post('/delete-user/:id', [$ApiController, 'delete_profile']);
 
 $router->run();
