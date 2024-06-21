@@ -223,4 +223,9 @@ class ApiModel
     {
         return $this->db->update('users', $data, ['id' => $id]);
     }
+
+    public function create_profile($data)
+    {
+        return $this->db->insert('users', $data);
+    }
 }

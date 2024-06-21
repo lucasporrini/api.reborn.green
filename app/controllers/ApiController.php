@@ -652,4 +652,33 @@ class ApiController
             }
         }
     }
+
+    public function create_profile()
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+        
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $data = json_decode(file_get_contents('php://input'), true);
+
+            // On fait l'ajout en base de données
+            $addedUser = $this->apiModel->create_profile($data);
+
+            if($addedUser == null) {
+                header('Content-Type: application/json');
+                http_response_code(500);
+                $json = ['error' => 'Erreur interne'];
+                echo json_encode($json, JSON_UNESCAPED_UNICODE);
+                exit;
+            } else {
+                // Retourner les données en json
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode(['success' => 'Utilisateur ajouté avec succès', 'id' => $addedUser], JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+        }
+    }
 }
