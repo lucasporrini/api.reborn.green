@@ -45,5 +45,7 @@ $router->post('/create-user', [$ApiController, 'create_profile']);
 $router->post('/delete-user', [$ApiController, 'delete_profile']);
 
 $router->post('/edit-category/:id', [$ApiController, 'edit_category']);
+$router->post('/create-category', [$ApiController, 'create_category']);
+$router->post('/delete-category', [$ApiController, 'delete_category']);
 
 $router->run();

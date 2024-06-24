@@ -238,4 +238,14 @@ class ApiModel
     {
         return $this->db->update('categories', $data, ['id' => $id]);
     }
+
+    public function create_category($data)
+    {
+        return $this->db->insert('categories', $data);
+    }
+
+    public function delete_category($id)
+    {
+        return $this->db->delete('categories', ['id' => $id]);
+    }
 }
