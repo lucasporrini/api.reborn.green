@@ -233,4 +233,9 @@ class ApiModel
     {
         return $this->db->insert('users', $data);
     }
+
+    public function edit_category($id, $data)
+    {
+        return $this->db->update('categories', $data, ['id' => $id]);
+    }
 }
