@@ -248,4 +248,19 @@ class ApiModel
     {
         return $this->db->delete('categories', ['id' => $id]);
     }
+
+    public function edit_client($id, $data)
+    {
+        return $this->db->update('clients', $data, ['id' => $id]);
+    }
+
+    public function create_client($data)
+    {
+        return $this->db->insert('clients', $data);
+    }
+
+    public function delete_client($id)
+    {
+        return $this->db->delete('clients', ['id' => $id]);
+    }
 }

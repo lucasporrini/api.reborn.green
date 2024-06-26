@@ -760,7 +760,7 @@ class ApiController
                 // Retourner les données en json
                 header('Content-Type: application/json');
                 http_response_code(200);
-                echo json_encode(['success' => 'Catégorie supprimé avec succès'], JSON_UNESCAPED_UNICODE);
+                echo json_encode(['success' => 'Catégorie supprimée avec succès'], JSON_UNESCAPED_UNICODE);
                 exit;
             }
         }
@@ -789,7 +789,92 @@ class ApiController
                 // Retourner les données en json
                 header('Content-Type: application/json');
                 http_response_code(200);
-                echo json_encode(['success' => 'Catégorie ajouté avec succès', 'id' => $addedCat], JSON_UNESCAPED_UNICODE);
+                echo json_encode(['success' => 'Catégorie ajoutée avec succès', 'id' => $addedCat], JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+        }
+    }
+
+    public function edit_client($id)
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+        
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $data = json_decode(file_get_contents('php://input'), true);
+
+            // On fait la modification en base de données
+            $editedCat = $this->apiModel->edit_client($id, $data);
+
+            if($editedCat !== null) {
+                header('Content-Type: application/json');
+                http_response_code(500);
+                echo json_encode(['error' => 'Erreur interne']);
+                exit;
+            } else {
+                // Retourner les données en json
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode(['success' => 'Client modifiée avec succès'], JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+        }
+    }
+
+    public function delete_client()
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+        
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $data = json_decode(file_get_contents('php://input'), true);
+
+            // On fait la suppression en base de données
+            $deletedCat = $this->apiModel->delete_client($data['id']);
+            
+            if($deletedCat !== null) {
+                header('Content-Type: application/json');
+                http_response_code(500);
+                echo json_encode(['error' => 'Erreur interne']);
+                exit;
+            } else {
+                // Retourner les données en json
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode(['success' => 'Client supprimé avec succès'], JSON_UNESCAPED_UNICODE);
+                exit;
+            }
+        }
+    }
+
+    public function create_client()
+    {
+        // On récupère le token dans le header
+        $headers = apache_request_headers();
+        $token = $headers['Authorization'];
+        
+        if($this->apiModel->middleware_auth($token)) {
+            // Récupérer les données
+            $data = json_decode(file_get_contents('php://input'), true);
+
+            // On fait l'ajout en base de données
+            $addedCat = $this->apiModel->create_client($data);
+
+            if($addedCat == null) {
+                header('Content-Type: application/json');
+                http_response_code(500);
+                $json = ['error' => 'Erreur interne'];
+                echo json_encode($json, JSON_UNESCAPED_UNICODE);
+                exit;
+            } else {
+                // Retourner les données en json
+                header('Content-Type: application/json');
+                http_response_code(200);
+                echo json_encode(['success' => 'Client ajouté avec succès', 'id' => $addedCat], JSON_UNESCAPED_UNICODE);
                 exit;
             }
         }

@@ -48,4 +48,8 @@ $router->post('/edit-category/:id', [$ApiController, 'edit_category']);
 $router->post('/create-category', [$ApiController, 'create_category']);
 $router->post('/delete-category', [$ApiController, 'delete_category']);
 
+$router->post('/edit-client/:id', [$ApiController, 'edit_client']);
+$router->post('/create-client', [$ApiController, 'create_client']);
+$router->post('/delete-client', [$ApiController, 'delete_client']);
+
 $router->run();
