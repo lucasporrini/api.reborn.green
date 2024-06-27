@@ -908,6 +908,7 @@ class ApiController
 
             // On fait la modification en base de données
             $editedCat = $this->apiModel->edit_chantier($id, $data);
+            dd($editedCat);
 
             if($editedCat !== null) {
                 header('Content-Type: application/json');
