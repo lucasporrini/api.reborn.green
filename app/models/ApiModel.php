@@ -264,6 +264,11 @@ class ApiModel
         return $this->db->delete('clients', ['id' => $id]);
     }
 
+    public function get_chantiers()
+    {
+        return $this->db->select('*', 'locations');
+    }
+
     public function edit_chantier($id, $data)
     {
         return $this->db->update('locations', $data, ['id' => $id]);
