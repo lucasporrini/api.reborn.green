@@ -52,4 +52,8 @@ $router->post('/edit-client/:id', [$ApiController, 'edit_client']);
 $router->post('/create-client', [$ApiController, 'create_client']);
 $router->post('/delete-client', [$ApiController, 'delete_client']);
 
+$router->post('/edit-chantier/:id', [$ApiController, 'edit_chantier']);
+$router->post('/create-chantier', [$ApiController, 'create_chantier']);
+$router->post('/delete-chantier', [$ApiController, 'delete_chantier']);
+
 $router->run();
