@@ -909,7 +909,7 @@ class ApiController
             // On fait la modification en base de données
             $editedCat = $this->apiModel->edit_chantier($id, $data);
             header('Content-Type: application/json');
-            echo json_encode($editedCat, JSON_UNESCAPED_UNICODE);
+            echo json_encode(['error' => $editedCat]);
             exit;
 
             if($editedCat !== null) {
