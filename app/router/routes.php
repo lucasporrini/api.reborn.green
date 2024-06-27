@@ -57,4 +57,8 @@ $router->post('/edit-chantier/:id', [$ApiController, 'edit_chantier']);
 $router->post('/create-chantier', [$ApiController, 'create_chantier']);
 $router->post('/delete-chantier', [$ApiController, 'delete_chantier']);
 
+$router->post('/edit-company/:id', [$ApiController, 'edit_company']);
+$router->post('/create-company', [$ApiController, 'create_company']);
+$router->post('/delete-company', [$ApiController, 'delete_company']);
+
 $router->run();

@@ -283,4 +283,19 @@ class ApiModel
     {
         return $this->db->delete('locations', ['id' => $id]);
     }
+
+    public function edit_company($id, $data)
+    {
+        return $this->db->update('company', $data, ['id' => $id]);
+    }
+
+    public function create_company($data)
+    {
+        return $this->db->insert('company', $data);
+    }
+
+    public function delete_company($id)
+    {
+        return $this->db->delete('company', ['id' => $id]);
+    }
 }
